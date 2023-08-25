@@ -44,10 +44,15 @@ const apiStatusConstants = {
 }
 
 class HomePage extends Component {
-  state = {trendingMovies: [], apiStatus: apiStatusConstants.initial}
+  state = {
+    trendingMovies: [],
+    originals: [],
+    apiStatus: apiStatusConstants.initial,
+  }
 
   componentDidMount() {
     this.getTrendingMovies()
+    this.getOriginalMovies()
   }
 
   updateTrendingMovies = trendingMovies => {
@@ -61,7 +66,6 @@ class HomePage extends Component {
       trendingMovies: updateDetails,
       apiStatus: apiStatusConstants.success,
     })
-    console.log(updateDetails)
   }
 
   getTrendingMovies = async () => {
@@ -76,16 +80,68 @@ class HomePage extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const trendingMovies = await response.json()
-      console.log(trendingMovies)
       this.updateTrendingMovies(trendingMovies)
     }
   }
 
-  renderSlider = () => {
+  updateOriginalMovies = originalMovies => {
+    const updateDetails = originalMovies.results.map(eachItem => ({
+      id: eachItem.id,
+      title: eachItem.title,
+      posterPath: eachItem.poster_path,
+      backdropPath: eachItem.backdrop_path,
+    }))
+    this.setState({
+      original: updateDetails,
+      apiStatus: apiStatusConstants.success,
+    })
+  }
+
+  getOriginalMovies = async () => {
+    const apiUrl = 'https://apis.ccbp.in/movies-app/originals'
+    const jwtToken = Cookies.get('jwt_token')
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    }
+    const response = await fetch(apiUrl, options)
+    if (response.ok) {
+      const originalMovies = await response.json()
+      console.log(originalMovies)
+      this.updateOriginalMovies(originalMovies)
+    }
+  }
+
+  renderTrendingSlider = () => {
     const {trendingMovies} = this.state
     return (
       <Slider {...settings}>
         {trendingMovies.map(eachLogo => {
+          const {id, backdropPath} = eachLogo
+          return (
+            <div className="slick-item" key={id}>
+              <img
+                className="logo-image"
+                src={backdropPath}
+                alt="company logo"
+              />
+            </div>
+          )
+        })}
+      </Slider>
+    )
+  }
+
+  renderOriginalSlider = () => {
+    const {original} = this.state
+    if (!original) {
+      return null
+    }
+    return (
+      <Slider {...settings}>
+        {original.map(eachLogo => {
           const {id, backdropPath} = eachLogo
           return (
             <div className="slick-item" key={id}>
@@ -123,7 +179,18 @@ class HomePage extends Component {
           <div className="trending-originals-videos-container">
             <h1 className="trending-heading">Trending Now</h1>
             <div className="slick-container-bg">
-              <div className="slick-container">{this.renderSlider()}</div>
+              <div className="slick-container">
+                {this.renderTrendingSlider()}
+              </div>
+            </div>
+          </div>
+
+          <div className="trending-originals-videos-container originals">
+            <h1 className="trending-heading">Originals</h1>
+            <div className="slick-container-bg">
+              <div className="slick-container">
+                {this.renderOriginalSlider()}
+              </div>
             </div>
           </div>
         </div>

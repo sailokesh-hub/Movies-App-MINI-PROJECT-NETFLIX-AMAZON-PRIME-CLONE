@@ -50,10 +50,12 @@
 
 .trending-original-bg-container {
   background-color: rgba(24, 24, 24, 1);
-  height: 70vh;
+  height: 85vh;
+  padding-top: 20px;
 }
 
 .trending-originals-videos-container {
+  padding-top: 40px;
   width: 1030px;
   margin: auto;
   color: #ffffff;
@@ -74,18 +76,19 @@
 
 .slick-item {
   border-radius: 10px;
+  color: #ffffff;
 }
 
 .logo-image {
   margin: 0px 10px;
   height: 170px;
   width: 244px;
-  margin-right: 40px;
+
   margin-left: 0px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .slick-prev:before,
 .slick-next:before {
-  color: black;
+  color: #ffffff;
 }
