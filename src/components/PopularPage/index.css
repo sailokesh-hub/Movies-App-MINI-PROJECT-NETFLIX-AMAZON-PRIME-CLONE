@@ -1,0 +1,66 @@
+.popular-bg-container {
+  background-color: rgba(24, 24, 24, 1);
+}
+
+.popular-page-container {
+  overflow-y: hidden;
+}
+
+.popular-movie-cards-container {
+  width: 1040px;
+  height: 100vh;
+  margin: auto;
+  overflow: auto;
+}
+
+.movie-cards-bg {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style-type: none;
+}
+
+.poster {
+  margin: 10px;
+  width: 235px;
+  height: 170px;
+  border-radius: 8px;
+}
+
+.load {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.failure-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.failure-img {
+  width: 375px;
+  height: 270px;
+}
+
+.failure-description {
+  color: #ffffff;
+  margin-top: 20px;
+  font-weight: 40px;
+}
+
+.try-again-btn {
+  width: 100px;
+  height: 45px;
+  margin-top: 20px;
+  border-radius: 3px;
+  border: none;
+  font-family: 'roboto';
+  cursor: pointer;
+}

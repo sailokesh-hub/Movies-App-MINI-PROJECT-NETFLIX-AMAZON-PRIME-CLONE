@@ -1,0 +1,55 @@
+.header-container {
+  height: 103px;
+  width: 100%;
+  background-color: rgba(19, 19, 19, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: sticky;
+}
+
+.header-container-logout {
+  height: 103px;
+  width: 100%;
+  background-color: rgba(19, 19, 19, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: sticky;
+}
+
+.logo-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: sticky;
+  margin-left: 0px;
+}
+
+.app-logo {
+  margin-top: 32px;
+  width: 135px;
+  height: 39px;
+}
+
+.link-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  list-style-type: none;
+  color: #ffffff;
+}
+
+.search-profile-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+}
+
+.link {
+  text-decoration: none;
+  color: #ffffff;
+}

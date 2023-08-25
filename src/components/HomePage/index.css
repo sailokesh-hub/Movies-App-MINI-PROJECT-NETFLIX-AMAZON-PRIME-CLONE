@@ -1,0 +1,86 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+.home-page-container {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.home-container {
+  background-image: url(https://res.cloudinary.com/dlsoah4xc/image/upload/v1691847229/Imagehome_page_superman_nh4tnb.jpg);
+  height: 100vh;
+  background-size: cover;
+  overflow-y: hidden;
+}
+
+.bg-detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+  width: 1030px;
+  margin: auto;
+}
+
+.bg-description {
+  width: 350px;
+}
+
+.play-btn {
+  width: 74px;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+}
+
+.title-heading {
+  font-size: 55px;
+  font-family: 'sans serif';
+  color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.bg-description {
+  color: #ffffff;
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+
+.trending-original-bg-container {
+  background-color: rgba(24, 24, 24, 1);
+  height: 70vh;
+}
+
+.trending-originals-videos-container {
+  width: 1030px;
+  margin: auto;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.trending-heading {
+  font-size: 24px;
+}
+
+.slick-container {
+  width: 100%;
+  max-width: 1500px;
+  margin-top: 10px;
+}
+
+.logo-image {
+  margin: 0px 10px;
+  height: 170px;
+  width: 254px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
