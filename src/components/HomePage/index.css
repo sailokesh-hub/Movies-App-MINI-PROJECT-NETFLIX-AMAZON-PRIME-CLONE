@@ -72,12 +72,17 @@
   margin-top: 10px;
 }
 
+.slick-item {
+  border-radius: 10px;
+}
+
 .logo-image {
   margin: 0px 10px;
   height: 170px;
-  width: 254px;
+  width: 244px;
   margin-right: 40px;
-  margin-left: 40px;
+  margin-left: 0px;
+  border-radius: 10px;
 }
 
 .slick-prev:before,
