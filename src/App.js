@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Account from './components/Account'
 import PopularPage from './components/PopularPage'
 import MovieDetailPage from './components/MovieDetailPage'
+import NotFound from './components/NotFound'
 import './App.css'
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
       path="/movies-app/movies/:id"
       component={MovieDetailPage}
     />
+    <Route component={NotFound} />
   </Switch>
 )
 
