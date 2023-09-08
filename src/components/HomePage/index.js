@@ -1,4 +1,6 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 import Slider from 'react-slick'
 import Cookies from 'js-cookie'
 import Header from '../Header'
@@ -47,7 +49,8 @@ class HomePage extends Component {
   state = {
     trendingMovies: [],
     originals: [],
-    apiStatus: apiStatusConstants.initial,
+    apiStatusTrending: apiStatusConstants.initial,
+    apiStatusOriginals: apiStatusConstants.initial,
   }
 
   componentDidMount() {
@@ -64,11 +67,12 @@ class HomePage extends Component {
     }))
     this.setState({
       trendingMovies: updateDetails,
-      apiStatus: apiStatusConstants.success,
+      apiStatusTrending: apiStatusConstants.success,
     })
   }
 
   getTrendingMovies = async () => {
+    this.setState({apiStatusTrending: apiStatusConstants.loading})
     const apiUrl = 'https://apis.ccbp.in/movies-app/trending-movies'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
@@ -81,6 +85,8 @@ class HomePage extends Component {
     if (response.ok) {
       const trendingMovies = await response.json()
       this.updateTrendingMovies(trendingMovies)
+    } else {
+      this.setState({apiStatusTrending: apiStatusConstants.failure})
     }
   }
 
@@ -92,8 +98,8 @@ class HomePage extends Component {
       backdropPath: eachItem.backdrop_path,
     }))
     this.setState({
-      original: updateDetails,
-      apiStatus: apiStatusConstants.success,
+      originals: updateDetails,
+      apiStatusOriginals: apiStatusConstants.success,
     })
   }
 
@@ -119,14 +125,12 @@ class HomePage extends Component {
     return (
       <Slider {...settings}>
         {trendingMovies.map(eachLogo => {
-          const {id, backdropPath} = eachLogo
+          const {id, backdropPath, name, posterPath} = eachLogo
           return (
             <div className="slick-item" key={id}>
-              <img
-                className="logo-image"
-                src={backdropPath}
-                alt="company logo"
-              />
+              <Link to={`/movies-app/movies/${id}`}>
+                <img className="logo-image" src={backdropPath} alt={name} />
+              </Link>
             </div>
           )
         })}
@@ -135,26 +139,44 @@ class HomePage extends Component {
   }
 
   renderOriginalSlider = () => {
-    const {original} = this.state
-    if (!original) {
+    const {originals} = this.state
+    if (!originals) {
       return null
     }
     return (
       <Slider {...settings}>
-        {original.map(eachLogo => {
-          const {id, backdropPath} = eachLogo
+        {originals.map(eachLogo => {
+          const {id, backdropPath, posterPath, name} = eachLogo
           return (
             <div className="slick-item" key={id}>
-              <img
-                className="logo-image"
-                src={backdropPath}
-                alt="company logo"
-              />
+              <Link to={`/movies-app/movies/${id}`}>
+                <img className="logo-image" src={backdropPath} alt={name} />
+              </Link>
             </div>
           )
         })}
       </Slider>
     )
+  }
+
+  renderLoading = () => (
+    <div className="loader-container load" testid="loader">
+      <Loader type="TailSpin" color="#D81F26" height={30} width={30} />
+    </div>
+  )
+
+  renderTrending = () => {
+    const {apiStatusTrending} = this.state
+    switch (apiStatusTrending) {
+      case apiStatusConstants.loading:
+        return this.renderLoading()
+      case apiStatusConstants.success:
+        return this.renderTrendingSlider()
+      case apiStatusConstants.failure:
+        return this.renderFailure()
+      default:
+        return null
+    }
   }
 
   render() {
@@ -178,20 +200,12 @@ class HomePage extends Component {
         <div className="trending-original-bg-container">
           <div className="trending-originals-videos-container">
             <h1 className="trending-heading">Trending Now</h1>
-            <div className="slick-container-bg">
-              <div className="slick-container">
-                {this.renderTrendingSlider()}
-              </div>
-            </div>
+            <div className="slick-container">{this.renderTrending()}</div>
           </div>
 
           <div className="trending-originals-videos-container originals">
             <h1 className="trending-heading">Originals</h1>
-            <div className="slick-container-bg">
-              <div className="slick-container">
-                {this.renderOriginalSlider()}
-              </div>
-            </div>
+            <div className="slick-container">{this.renderOriginalSlider()}</div>
           </div>
         </div>
         <Footer />

@@ -1,5 +1,6 @@
 .account-details-container {
-  width: 700px;
+  width: 100%;
+  overflow: auto;
   margin: auto;
   height: 100vh;
   display: flex;

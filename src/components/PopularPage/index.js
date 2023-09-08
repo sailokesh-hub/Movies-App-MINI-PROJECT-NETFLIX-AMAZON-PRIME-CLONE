@@ -59,7 +59,7 @@ class PopularPage extends Component {
       <>
         <ul className="movie-cards-bg">
           {popularMovies.map(eachItem => (
-            <Link to={eachItem.id}>
+            <Link to={`/movies-app/movies/${eachItem.id}`}>
               <li>
                 <img
                   className="poster"

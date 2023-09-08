@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {BsGoogle, BsTwitter, BsInstagram, BsYoutube} from 'react-icons/bs'
+import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
 import './index.css'
 
 class Footer extends Component {
@@ -7,12 +7,12 @@ class Footer extends Component {
     return (
       <div className="footer-container">
         <div className="icons-container">
-          <BsGoogle color="#ffffff" cursor="pointer" />
-          <BsTwitter color="#ffffff" cursor="pointer" />
-          <BsInstagram color="#ffffff" cursor="pointer" />
-          <BsYoutube color="#ffffff" cursor="pointer" />
+          <FaGoogle color="#ffffff" cursor="pointer" />
+          <FaTwitter color="#ffffff" cursor="pointer" />
+          <FaInstagram color="#ffffff" cursor="pointer" />
+          <FaYoutube color="#ffffff" cursor="pointer" />
         </div>
-        <p>Contact Us</p>
+        <p>Contact us</p>
       </div>
     )
   }

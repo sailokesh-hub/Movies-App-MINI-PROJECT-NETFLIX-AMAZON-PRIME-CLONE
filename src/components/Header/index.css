@@ -1,21 +1,23 @@
 .header-container {
   height: 103px;
-  width: 100%;
+  width: 100vw;
   background-color: rgba(19, 19, 19, 0.2);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   position: sticky;
+  overflow: auto;
 }
 
 .header-container-logout {
   height: 103px;
-  width: 100%;
+  width: 100vw;
   background-color: rgba(19, 19, 19, 1);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   position: sticky;
+  overflow: auto;
 }
 
 .logo-links-container {
@@ -52,4 +54,14 @@
 .link {
   text-decoration: none;
   color: #ffffff;
+}
+
+.search {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar {
+  border-color: #ffffff;
 }

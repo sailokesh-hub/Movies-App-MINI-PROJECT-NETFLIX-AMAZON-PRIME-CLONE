@@ -1,5 +1,7 @@
 .popular-bg-container {
   background-color: rgba(24, 24, 24, 1);
+  width: 100%;
+  overflow: auto;
 }
 
 .popular-page-container {

@@ -1,0 +1,11 @@
+.search-bg {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.search-background {
+  background-color: black;
+}

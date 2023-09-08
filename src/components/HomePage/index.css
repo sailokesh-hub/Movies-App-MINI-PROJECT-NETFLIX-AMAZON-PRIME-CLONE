@@ -92,3 +92,17 @@
 .slick-next:before {
   color: #ffffff;
 }
+
+.load {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-container-bg {
+  height: 200px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
